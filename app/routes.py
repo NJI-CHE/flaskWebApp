@@ -1,10 +1,11 @@
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from app import app
 from app.forms import LoginForm
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
 from app.models import User
+from urllib.parse import urlsplit
 
 
 
@@ -12,8 +13,9 @@ from app.models import User
 #creates an association bt URL given as an argument & the fxn.
 @app.route('/')
 @app.route('/index')
+@login_required
 def index():
-    user = {'username': 'NjiChe.dev'}
+    #user = {'username': 'NjiChe.dev'}
 
     posts = [
         {
@@ -25,7 +27,7 @@ def index():
             'body': 'The space between us was awesome'
         }
     ]
-    return render_template('index.html', title='Home', user=user, posts=posts)
+    return render_template('index.html', title='Home', posts=posts)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -40,7 +42,10 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('index'))
+        next_page = request.args.get('next')
+        if not next_page or urlsplit(next_page).netloc != '';
+            next_page = url_for('index')
+        return redirect('index')
     return render_template('login.html', title='Sign In', form=form)
 
 #renderinng is the process that converts a template in2 a HTMl page

@@ -4,9 +4,4 @@ Single-database configuration for Flask.
 
 The main objectives of teaching object-oriented programming (OOP) are to equip students with the skills to design and develop robust, maintainable, and reusable software systems. OOP promotes modularity, abstraction, and code reusability, making it easier to create complex applications and manage large software project
 
-03-06-25
-Used werkzeug to encode and decode user password in the models .py file. We first import werkzeug and then we 
-
-Installed the flask login module which is Login manager 
-imported and initilaised it in the init.py fiel
-
+0
