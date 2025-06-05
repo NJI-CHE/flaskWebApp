@@ -16,10 +16,14 @@ Each time a logged-in user navigates to anew page, Flask-Login retrieves the Id 
 The loader function enables Flask login to load user data from the db
 
 04-06-25
+
 Worked on URL redirection based on authentication and user sessions
 
 ##05-06-2025
 ..*Completed the routing and URL direction
+
 ..*Built registration form
+
 ..*Added function view for registration from
+
 ..*Key concepts learned: Validators, usinf wtFroms,routing, templates
