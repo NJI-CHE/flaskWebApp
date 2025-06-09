@@ -84,3 +84,18 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html',title='Register', form=form)
+
+#Creating user profiles, so we create a route for specific user profiles, the route decorato has a dynamic component in 'username' which sets to the particular
+#username of a user when called,
+#@login_required- ensures only loginn users are going to have access
+#we first try to load user from db using query by username; the db.first_or_404 send result if available or returns  a 404 error if db is empty
+
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    user = db.first_or_404(sa.select(User).where(User.username == username))
+    posts = [
+        {'author': user, 'body': 'Test post #1'},
+        {'author': user, 'body': 'Test post #2'}
+    ]
+    return render_template('user.html', user=user, post=posts)
