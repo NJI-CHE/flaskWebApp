@@ -28,3 +28,6 @@ Worked on URL redirection based on authentication and user sessions
 ..*Added function view for registration from
 
 ..*Key concepts learned: Validators, usinf wtFroms,routing, templates
+
+### 10-06-25
+--Worked on autoincrement User id
