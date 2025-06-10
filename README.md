@@ -1,9 +1,9 @@
 
-##This is the Flask project
+# This is the Flask project
 
-##The beginning of the 100 days of code
+## The beginning of the 100 days of code
 
-3-06-25
+## 3-06-25
 Used werkzeug to encode and decode user password in the models.py file. We first import werkzeug and then we 
 
 Installed the flask login module which is Login manager 
@@ -16,11 +16,11 @@ Each time a logged-in user navigates to anew page, Flask-Login retrieves the Id 
 
 The loader function enables Flask login to load user data from the db
 
-04-06-25
+## 04-06-25
 
 Worked on URL redirection based on authentication and user sessions
 
-##05-06-2025
+## 05-06-2025
 ..*Completed the routing and URL direction
 
 ..*Built registration form
@@ -29,5 +29,5 @@ Worked on URL redirection based on authentication and user sessions
 
 ..*Key concepts learned: Validators, usinf wtFroms,routing, templates
 
-### 10-06-25
+## 10-06-25
 --Worked on autoincrement User id
