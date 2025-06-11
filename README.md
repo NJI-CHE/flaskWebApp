@@ -31,3 +31,6 @@ Worked on URL redirection based on authentication and user sessions
 
 ## 10-06-25
 --Worked on autoincrement User id
+
+## 11-06-25
+-- Added User avatars using Gravatar service
