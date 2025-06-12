@@ -34,3 +34,5 @@ Worked on URL redirection based on authentication and user sessions
 
 ## 11-06-25
 -- Added User avatars using Gravatar service
+## 12-06-25
+-- Continued work on the User avatars and resolved some bugs
