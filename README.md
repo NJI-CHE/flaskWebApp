@@ -36,5 +36,7 @@ Worked on URL redirection based on authentication and user sessions
 -- Added User avatars using Gravatar service
 ## 12-06-25
 -- Continued work on the User avatars and resolved some bugs
-##13-06-25
---Used Jinja templates for user profiles
+## 13-06-25
+-- Used Jinja templates for user profiles
+## 19-06-25
+-- Completed Profile Page and Avatars
