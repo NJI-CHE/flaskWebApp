@@ -8,6 +8,7 @@ from app.models import User
 from urllib.parse import urlsplit
 from  datetime import datetime, timezone
 from app.forms import EditProfileForm
+from flask import abort
 
 
 
@@ -31,6 +32,10 @@ def index():
     ]
     return render_template('index.html', title='Home', posts=posts)
 
+@app.route('/blog')
+def blog():
+    return render_template('blog.html', title='Blog')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -49,6 +54,8 @@ def login():
             next_page = url_for('index')
         return redirect('index')
     return render_template('login.html', title='Sign In', form=form)
+
+
 
 #renderinng is the process that converts a template in2 a HTMl page
 #This is done by imporx the inbuilt render_template() fxn
@@ -93,14 +100,16 @@ def register():
 #we first try to load user from db using query by username; the db.first_or_404 send result if available or returns  a 404 error if db is empty
 
 @app.route('/user/<username>')
-@login_required
+#@login_required
 def user(username):
-    user = db.first_or_404(sa.select(User).where(User.username == username))
+    user = db.session.scalar(sa.select(User).where(User.username == username))
+    if user is None:
+        abort(404)
     posts = [
         {'author': user, 'body': 'Test post #1'},
         {'author': user, 'body': 'Test post #2'}
     ]
-    return render_template('user.html', user=user, post=posts)
+    return render_template('user.html', user=user, posts=posts)
 
 @app.before_request
 def before_request():
@@ -111,7 +120,7 @@ def before_request():
 
 #View function for the EditProfile
 @app.route('/edit_profile', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def edit_profile():
     form= EditProfileForm()
     if form.validate_on_submit():
